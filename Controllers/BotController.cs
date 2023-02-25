@@ -53,7 +53,7 @@ namespace BotManager.Api.Controllers
                     return BadRequest();
                 }
 
-                return Ok(1);
+                return Ok(remainingKc);
             }
             catch (Exception ex)
             {

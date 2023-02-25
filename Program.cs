@@ -2,6 +2,7 @@ using System.Linq;
 using BotManager.Lib.Data;
 using BotManager.Lib.Services;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
