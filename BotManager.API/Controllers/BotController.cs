@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using BotManager.Api.Data.Entities;
 using BotManager.Api.Requests;
-using BotManager.Lib.Services;
+using BotManager.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BotManager.Api.Controllers
@@ -66,11 +67,11 @@ namespace BotManager.Api.Controllers
         {
             try
             {
-                List<Lib.Data.Entities.Loot> gatheredItems = new();
+                List<Loot> gatheredItems = new();
 
                 foreach (var item in request.Items)
                 {
-                    gatheredItems.Add(new Lib.Data.Entities.Loot()
+                    gatheredItems.Add(new Data.Entities.Loot()
                     {
                         RunescapeId = item.ItemId,
                         Quantity = item.Quantity,

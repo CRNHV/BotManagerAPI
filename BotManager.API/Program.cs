@@ -1,8 +1,7 @@
 using System.Linq;
-using BotManager.Lib.Data;
-using BotManager.Lib.Services;
+using BotManager.Api.Data;
+using BotManager.Api.Services;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,8 +17,7 @@ namespace BotManager.Api
 
             builder.Services.AddControllersWithViews();
             // builder.Services.AddDbContext<ManagerContext>(opt => opt.UseInMemoryDatabase("database"));
-            builder.Services.AddDbContext<ManagerContext>(opt => opt.UseSqlite($"Data Source=../../dbs/db.sqlite"));
-            //builder.Services.AddDbContext<ManagerContext>(opt => opt.UseSqlServer($"Server=localhost;Database=BotManager;Trust Server Certificate=true;Trusted_Connection=True;"));
+            builder.Services.AddDbContext<ManagerContext>(opt => opt.UseSqlServer($"Server=localhost;Database=BotManager;Trust Server Certificate=true;Trusted_Connection=True;"));
 
             builder.Services.AddScoped<IBotService, BotService>();
 
@@ -35,12 +33,12 @@ namespace BotManager.Api
                 dbContext.Database.Migrate();
                 if (!dbContext.Settings.Any())
                 {
-                    dbContext.Settings.Add(new Lib.Data.Entities.Settings()
+                    dbContext.Settings.Add(new Data.Entities.Settings()
                     {
                         KillCountPerDay = 60
                     });
 
-                    dbContext.SaveChanges();                    
+                    dbContext.SaveChanges();
                 }
             }
 

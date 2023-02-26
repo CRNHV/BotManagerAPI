@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using BotManager.Lib.Data.Entities;
-using BotManager.Lib.Services;
+using BotManager.Api.Data.Entities;
+using BotManager.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BotManager.Api.Controllers

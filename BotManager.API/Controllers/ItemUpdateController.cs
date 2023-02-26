@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using BotManager.Lib.Data;
+using BotManager.Api.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -38,7 +38,7 @@ namespace BotManager.Api.Controllers
                 var id = (string)item["id"];
                 var name = (string)item["name"];
 
-                await _context.Items.AddAsync(new Lib.Data.Entities.Item()
+                await _context.Items.AddAsync(new Data.Entities.Item()
                 {
                     Name = name,
                     RunescapeId = int.Parse(id)
@@ -62,7 +62,7 @@ namespace BotManager.Api.Controllers
 
             var activity = botProfile.Activity.First();
 
-            var sorted = activity.Loot                             
+            var sorted = activity.Loot
                 .ToList();
 
             return Ok();
