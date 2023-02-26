@@ -17,8 +17,8 @@ namespace BotManager.Api
 
             builder.Services.AddControllersWithViews();
             // builder.Services.AddDbContext<ManagerContext>(opt => opt.UseInMemoryDatabase("database"));
-            builder.Services.AddDbContext<ManagerContext>(opt => opt.UseSqlServer($"Server=localhost;Database=BotManager;Trust Server Certificate=true;Trusted_Connection=True;"));
-
+            // builder.Services.AddDbContext<ManagerContext>(opt => opt.UseSqlServer($"Server=localhost;Database=BotManager;Trust Server Certificate=true;Trusted_Connection=True;"));
+            builder.Services.AddDbContext<ManagerContext>(opt => opt.UseSqlite($"Data Source=../../dbs/db.sqlite"));
             builder.Services.AddScoped<IBotService, BotService>();
 
             builder.Services.AddLogging();
