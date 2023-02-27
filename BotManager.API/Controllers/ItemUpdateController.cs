@@ -60,9 +60,11 @@ namespace BotManager.Api.Controllers
                 .ThenInclude(x => x.Item)
                 .FirstOrDefaultAsync();
 
-            var activity = botProfile.Activity.First();
+            var activity = botProfile.Activity.OrderByDescending(x => x.Loot.Count).FirstOrDefault();
 
             var sorted = activity.Loot
+                .GroupBy(x => new { x.Item.Name})  
+                .Select(x => new { x.Key.Name, Quantity = x.Sum(x => x.Quantity) })
                 .ToList();
 
             return Ok();

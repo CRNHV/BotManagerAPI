@@ -36,8 +36,9 @@
                         </h2>
                         @{
                             var sortedLoot = activity.Loot
-                                .GroupBy(x => new { x.RunescapeId, x.Quantity, x.Item.Name })
+                                .GroupBy(x => new { x.Item.Name })
                                 .Select(x => new { x.Key.Name, Quantity = x.Sum(x => x.Quantity) })
+                                .OrderByDescending(x => x.Quantity)
                                 .ToList();
 
                             @foreach (var item in sortedLoot)
